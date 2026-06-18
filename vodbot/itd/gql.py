@@ -149,12 +149,7 @@ def get_clip_source(clip_slug):
 		"variables": {
 			"slug": clip_slug
 		},
-		"extensions": {
-			"persistedQuery": {
-				"version": 1,
-				"sha256Hash": "36b89d2507fce29e5ca551df756d27c1cfe079e2609642b4390aa4c35796eb11"
-			}
-		}
+		"query": "query VideoAccessToken_Clip($slug: ID!) { clip(slug: $slug) { playbackAccessToken(params: {platform: \"web\", playerBackend: \"mediaplayer\", playerType: \"site\"}) { signature value } } }"
 	}
 
 	resp = gql_post(json=query).json()
